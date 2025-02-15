@@ -16,15 +16,18 @@ const CartSlice = createSlice({
             } else {
                 state.cartItems.push({ ...action.payload, quantity: 1 });
                 state.disabledProducts.push(action.payload.id);
+                // console.log(state.disabledProducts);
             }
         },
         removeItemFromCart(state, action) {
             state.cartItems = state.cartItems.filter(item => item.id !== action.payload);
             state.disabledProducts = state.disabledProducts.filter(itemid => itemid !== action.payload);
+            // console.log(state.disabledProducts);
         },
         clearCart(state) {
             state.cartItems = [];
             state.disabledProducts = [];
+            // console.log(state.disabledProducts);
         },
         increaseItemQuantity(state, action) {
             const itemToIncrease = state.cartItems.find(item => item.id === action.payload);

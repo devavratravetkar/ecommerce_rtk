@@ -5,7 +5,7 @@ import './ProductList.css';
 
 const ProductList = () => {
     const dispatch = useDispatch();
-    const disabledProducts = useSelector(state => state.cart.disabledProducts); // State to store disabled products
+    const disabledProducts = useSelector(state => state.cart.disabledProducts); // Array tore disabled products
 
     const products = [
         { id: 1, name: 'Product A', price: 60 },
@@ -15,7 +15,6 @@ const ProductList = () => {
 
     const handleAddToCart = product => {
         dispatch(addItemToCart(product));
-        //setDisabledProducts([...disabledProducts, product.id]); // Mark the product as disabled
     };
 
     return (
