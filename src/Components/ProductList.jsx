@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from './CartSlice';
 import './ProductList.css'; 
 
 const ProductList = () => {
     const dispatch = useDispatch();
-    const [disabledProducts, setDisabledProducts] = useState([]); // State to store disabled products
+    const disabledProducts = useSelector(state => state.cart.disabledProducts); // State to store disabled products
 
     const products = [
         { id: 1, name: 'Product A', price: 60 },
@@ -15,7 +15,7 @@ const ProductList = () => {
 
     const handleAddToCart = product => {
         dispatch(addItemToCart(product));
-        setDisabledProducts([...disabledProducts, product.id]); // Mark the product as disabled
+        //setDisabledProducts([...disabledProducts, product.id]); // Mark the product as disabled
     };
 
     return (
